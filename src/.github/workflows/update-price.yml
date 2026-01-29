@@ -1,0 +1,49 @@
+name: Update price.json and deploy Pages
+
+on:
+  schedule:
+    - cron: "5 * * * *"   # joka tunti :05 (UTC). Säädä tarvittaessa.
+  workflow_dispatch:       # mahdollistaa manuaalisen ajon Actions-välilehdeltä
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # tarvitaan commit/push
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Update price.json (updated timestamp / optional API price)
+        run: |
+          npm ci || true
+          node scripts/update-price.js
+
+      - name: Commit changes (if any)
+        run: |
+          if [ -n "$(git status --porcelain public/price.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add public/price.json
+            git commit -m "chore: update price.json [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+
+      - name: Build (Vite)
+        run: |
+          npm ci || true
+          npm run build
+
+      - name: Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist
+          clean: true
