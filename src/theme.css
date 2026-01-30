@@ -1,24 +1,22 @@
 /* src/theme.css */
 :root{
-    /* Default theme vars (ylikirjoitetaan teemoilla) */
-    --bg: #000309;
-    --card: rgba(255,255,255,0.08);
-    --border: rgba(255,255,255,0.12);
-    --text: #eaf0ff;
-    --muted: rgba(234,240,255,0.72);
+    /* Nämä ylikirjoitetaan teemoilla */
+    --bg: #f4f6fb;
+    --card: #ffffff;
+    --border: rgba(0,0,0,0.08);
+    --text: #1f2937;
+    --muted: #6b7280;
   
     --good: #22c55e;
     --mid:  #f59e0b;
     --bad:  #ef4444;
   
-    --accent: #7c3aed;
-  
-    /* Glow-värit (varmistaa että taustagradientti vaihtuu teemassa myös iOS WebView:ssä) */
-    --accentGlow: rgba(124,58,237,0.28);
-    --goodGlow: rgba(34,197,94,0.18);
+    --accent: #6366f1;
+    --accentGlow: rgba(99,102,241,0.15);
+    --goodGlow: rgba(34,197,94,0.10);
   
     --radius: 18px;
-    --shadow: 0 10px 30px rgba(0,0,0,0.35);
+    --shadow: 0 10px 30px rgba(0,0,0,0.08);
     --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   }
   
@@ -34,192 +32,12 @@
       var(--bg);
   }
   
-  /* Card + layout */
+  /* Card */
   .card{
     background: var(--card);
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
     border-radius: var(--radius);
     padding: 16px 18px;
-    backdrop-filter: blur(10px);
   }
   
-  .row{
-    display:flex;
-    align-items:baseline;
-    justify-content:space-between;
-    gap:12px;
-  }
-  
-  .title{
-    font-size: 13px;
-    color: var(--muted);
-  }
-  
-  .price{
-    font-size: 44px;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1;
-  }
-  
-  .unit{
-    font-size: 14px;
-    color: var(--muted);
-    margin-left: 8px;
-  }
-  
-  .small{
-    font-size: 13px;
-    color: var(--muted);
-  }
-  
-  /* Status badge */
-  .badge{
-    font-size: 12px;
-    padding: 4px 10px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    color: var(--text);
-  }
-  
-  /* TÄRKEÄ: käytetään CSS-muuttujia, jotta teema vaikuttaa */
-  .badge.good{
-    background: rgba(0,0,0,0.0);
-    background: color-mix(in srgb, var(--good) 20%, transparent);
-    border-color: color-mix(in srgb, var(--good) 45%, var(--border));
-  }
-  .badge.mid{
-    background: rgba(0,0,0,0.0);
-    background: color-mix(in srgb, var(--mid) 20%, transparent);
-    border-color: color-mix(in srgb, var(--mid) 45%, var(--border));
-  }
-  .badge.bad{
-    background: rgba(0,0,0,0.0);
-    background: color-mix(in srgb, var(--bad) 20%, transparent);
-    border-color: color-mix(in srgb, var(--bad) 45%, var(--border));
-  }
-  
-  /* Jos color-mix ei ole tuettu jossain WebView:ssä, yllä olevat rivit ignoroidaan.
-     Siksi kannattaa pitää myös perus fallback-värit halutessa:
-     (voit poistaa jos kaikki laitteet tukee color-mix) */
-  @supports not (background: color-mix(in srgb, red 10%, transparent)) {
-    .badge.good{ background: rgba(34,197,94,0.18); border-color: rgba(34,197,94,0.35); }
-    .badge.mid { background: rgba(245,158,11,0.18); border-color: rgba(245,158,11,0.35); }
-    .badge.bad { background: rgba(239,68,68,0.18); border-color: rgba(239,68,68,0.35); }
-  }
-  
-  /* Settings button */
-    .settingsBtn{  
-    position: fixed;
-    top: calc(env(safe-area-inset-top, 0px) + 12px);
-    right: calc(env(safe-area-inset-right, 0px) + 12px);
-    z-index: 999999;
-    width: 42px;
-    height: 42px;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    background: rgba(255,255,255,0.06);
-    color: var(--text);
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-    box-shadow: var(--shadow);
-    backdrop-filter: blur(10px);
-  }
-  
-  .settingsBtn:hover{
-    border-color: var(--accent);
-  }
-  
-  /* Modal */
-  .modalOverlay{
-    position: fixed;
-    inset: 0;
-    z-index: 1000000;
-    background: rgba(0,0,0,0.45);
-    display: grid;
-    place-items: center;
-    padding: 18px;
-  }
-  
-  .modalCard{
-    width: min(520px, 100%);
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    backdrop-filter: blur(14px);
-    padding: 14px;
-  }
-  
-  .modalHeader{
-    display:flex;
-    align-items:flex-start;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-  
-  .modalTitle{ font-weight: 800; font-size: 16px; }
-  .modalSubtitle{ font-size: 13px; color: var(--muted); margin-top: 2px; }
-  
-  .iconBtn{
-    width: 36px;
-    height: 36px;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text);
-    cursor: pointer;
-  }
-  .iconBtn:hover{ border-color: var(--accent); }
-  
-  .themeGrid{
-    display:grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-  @media (max-width: 420px){
-    .themeGrid{ grid-template-columns: 1fr; }
-  }
-  
-  .themeOption{
-    border-radius: 16px;
-    border: 1px solid var(--border);
-    background: rgba(255,255,255,0.02);
-    padding: 12px;
-    text-align: left;
-    cursor: pointer;
-  }
-  
-  .themeOption:hover{ border-color: var(--accent); }
-  
-  .themeOption.active{
-    border-color: var(--accent);
-    outline: 2px solid rgba(255,255,255,0.08);
-  }
-  
-  .swatches{ display:flex; gap: 6px; margin-bottom: 8px; }
-  
-  .swatch{
-    width: 18px; height: 18px;
-    border-radius: 7px;
-    border: 1px solid rgba(255,255,255,0.18);
-  }
-  
-  .themeName{ font-weight: 700; font-size: 14px; }
-  
-  /* Chart */
-  .chartWrap{
-    width: 100%;
-    height: 220px;
-  }
-  .settingsBtn{
-    border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
-  }
-  
-  .settingsBtn:hover{
-    border-color: var(--accent);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.25), 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
-  }
