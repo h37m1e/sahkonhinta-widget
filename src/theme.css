@@ -1,7 +1,7 @@
 /* src/theme.css */
 :root{
     /* Default theme vars (ylikirjoitetaan teemoilla) */
-    --bg: #0b1020;
+    --bg: #e1e3e7;
     --card: rgba(255,255,255,0.08);
     --border: rgba(255,255,255,0.12);
     --text: #eaf0ff;
