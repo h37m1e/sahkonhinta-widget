@@ -2,7 +2,7 @@
 export const themes = [
     {
       id: "pink-kawaii",
-      name: "Pink Kawaii 💗",
+      name: "Pink",
       vars: {
         "--bg": "#160b18",
         "--card": "rgba(255, 255, 255, 0.09)",
@@ -21,7 +21,7 @@ export const themes = [
     },
     {
       id: "lavender",
-      name: "Lavender 🪻",
+      name: "Lavender",
       vars: {
         "--bg": "#0d0a1a",
         "--card": "rgba(255, 255, 255, 0.08)",
@@ -40,7 +40,7 @@ export const themes = [
     },
     {
       id: "mint-soda",
-      name: "Mint Soda 🍃",
+      name: "Mint",
       vars: {
         "--bg": "#071513",
         "--card": "rgba(255, 255, 255, 0.08)",
@@ -59,7 +59,7 @@ export const themes = [
     },
     {
       id: "peach",
-      name: "Peach 🍑",
+      name: "Peach",
       vars: {
         "--bg": "#170f0a",
         "--card": "rgba(255, 255, 255, 0.085)",
@@ -78,7 +78,7 @@ export const themes = [
     },
     {
       id: "sky",
-      name: "Sky Blue ☁️",
+      name: "Sky Blue",
       vars: {
         "--bg": "#07101d",
         "--card": "rgba(255, 255, 255, 0.08)",
