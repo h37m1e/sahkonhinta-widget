@@ -1,26 +1,24 @@
-/* src/theme.css */
 :root{
-    /* Nämä ylikirjoitetaan teemoilla */
+    /* Default = VAALEA */
     --bg: #f4f6fb;
     --card: #ffffff;
     --border: rgba(0,0,0,0.08);
     --text: #1f2937;
-    --muted: #6b7280;
+    --muted: rgba(31,41,55,0.6);
   
     --good: #22c55e;
     --mid:  #f59e0b;
     --bad:  #ef4444;
   
     --accent: #6366f1;
-    --accentGlow: rgba(99,102,241,0.15);
-    --goodGlow: rgba(34,197,94,0.10);
+  
+    --accentGlow: rgba(99,102,241,0.18);
+    --goodGlow: rgba(34,197,94,0.12);
   
     --radius: 18px;
     --shadow: 0 10px 30px rgba(0,0,0,0.08);
     --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   }
-  
-  html, body { height: 100%; }
   
   body{
     margin:0;
@@ -30,14 +28,5 @@
       radial-gradient(1200px 600px at 20% 0%, var(--accentGlow), transparent 60%),
       radial-gradient(1000px 500px at 100% 0%, var(--goodGlow), transparent 55%),
       var(--bg);
-  }
-  
-  /* Card */
-  .card{
-    background: var(--card);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    border-radius: var(--radius);
-    padding: 16px 18px;
   }
   
